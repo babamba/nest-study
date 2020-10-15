@@ -8,6 +8,8 @@ import {
   Post,
   Put,
   Query,
+  Req,
+  Res,
 } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
@@ -20,6 +22,10 @@ export class MoviesController {
 
   @Get() // 해당 엔트리포인트의 root
   getAll(): Movie[] {
+    /**
+     * Nestjs 는 express & Fastify 두개의 프레임워크 위에서 동시에 돌아간다.
+     * express에서 사용하는 객체를 접근할 수 있지만, express 와 fastify 전환이 힘들어진다.
+     */
     return this.moviesService.getAll();
   }
 
